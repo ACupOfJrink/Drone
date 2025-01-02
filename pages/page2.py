@@ -174,33 +174,31 @@ with tab1:
 
 
     
-# with tab2:
-#     st.sidebar.write("_:blue[编队任务响应时间]_")
-#     st.caption("此动画展示了在纯无源情况下在数据库中随机挑选500个子任务下,定位算法的平均响应时间(对数刻度下).注意可以在左侧选择是否加载模拟数据库")
-#     with st.spinner('加载中...'):
-#         time.sleep(2)
+with tab2:
+    st.sidebar.write("_:blue[编队任务响应时间]_")
+    st.caption("此动画展示了在纯无源情况下在数据库中随机挑选500个子任务下,定位算法的平均响应时间(对数刻度下).注意可以在左侧选择是否加载模拟数据库")
+    with st.spinner('加载中...'):
+        time.sleep(2)
     
-#     progress_bar = st.sidebar.progress(0)
-#     status_text = st.sidebar.empty()
-#     last_rows = np.random.randn(1, 1)
-#     chart = st.line_chart(last_rows)
+    progress_bar = st.sidebar.progress(0)
+    status_text = st.sidebar.empty()
+    last_rows = np.random.randn(1, 1)
+    chart = st.line_chart(last_rows)
 
-#     for i in range(1, 101):
-#         new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
-#         status_text.text("%i%% 模拟已完成" % i)
-#         chart.add_rows(new_rows)
-#         progress_bar.progress(i)
-#         last_rows = new_rows
-#         time.sleep(0.05)
+    for i in range(1, 101):
+        new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
+        status_text.text("%i%% 模拟已完成" % i)
+        chart.add_rows(new_rows)
+        progress_bar.progress(i)
+        last_rows = new_rows
+        time.sleep(0.05)
 
-#     progress_bar.empty()
+    progress_bar.empty()
 
-#     # Streamlit widgets automatically run the script from top to bottom. Since
-#     # this button is not connected to any other logic, it just causes a plain
-#     # rerun.
-#     st.button("再次运行",key=2)
-
-
+    # Streamlit widgets automatically run the script from top to bottom. Since
+    # this button is not connected to any other logic, it just causes a plain
+    # rerun.
+    st.button("再次运行",key=2)
 
 
 
@@ -220,349 +218,351 @@ with tab1:
 
 
 
-# with tab3: 
-#     st.sidebar.write("_:blue[编队跨城市路线模拟]_")
-#     st.caption("此地图路线展示了在跨城市路线下,无人机编队的跨城市飞行的停泊、定位、定向与队流情况.您可以通过左侧的地图面板选择查看特定细节")
-#     @st.cache_data
-#     def from_data_file(filename):
-#         url = (
-#             "https://raw.githubusercontent.com/streamlit/"
-#             "example-data/master/hello/v1/%s" % filename
-#         )
-#         return pd.read_json(url)
-
-#     try:
-#         ALL_LAYERS = {
-#             "编队停泊点": pdk.Layer(
-#                 "HexagonLayer",
-#                 data=from_data_file("bike_rental_stats.json"),
-#                 get_position=["lon", "lat"],
-#                 radius=200,
-#                 elevation_scale=4,
-#                 elevation_range=[0, 1000],
-#                 extruded=True,
-#             ),
-#             "编队定位点": pdk.Layer(
-#                 "ScatterplotLayer",
-#                 data=from_data_file("bart_stop_stats.json"),
-#                 get_position=["lon", "lat"],
-#                 get_color=[200, 30, 0, 160],
-#                 get_radius="[exits]",
-#                 radius_scale=0.05,
-#             ),
-#             "编队定向点": pdk.Layer(
-#                 "TextLayer",
-#                 data=from_data_file("bart_stop_stats.json"),
-#                 get_position=["lon", "lat"],
-#                 get_text="name",
-#                 get_color=[0, 0, 0, 200],
-#                 get_size=10,
-#                 get_alignment_baseline="'bottom'",
-#             ),
-#             "编队飞行队流": pdk.Layer(
-#                 "ArcLayer",
-#                 data=from_data_file("bart_path_stats.json"),
-#                 get_source_position=["lon", "lat"],
-#                 get_target_position=["lon2", "lat2"],
-#                 get_source_color=[200, 30, 0, 160],
-#                 get_target_color=[200, 30, 0, 160],
-#                 auto_highlight=True,
-#                 width_scale=0.0001,
-#                 get_width="outbound",
-#                 width_min_pixels=3,
-#                 width_max_pixels=30,
-#             ),
-#         }
-#         st.sidebar.markdown("### 地图面板")
-#         selected_layers = [
-#             layer
-#             for layer_name, layer in ALL_LAYERS.items()
-#             if st.sidebar.checkbox(layer_name, True)
-#         ]
-#         if selected_layers:
-#             st.pydeck_chart(
-#                 pdk.Deck(
-#                     map_style=None,
-#                     initial_view_state={
-#                         "latitude": 37.76,
-#                         "longitude": -122.4,
-#                         "zoom": 11,
-#                         "pitch": 50,
-#                     },
-#                     layers=selected_layers,
-#                 )
-#             )
-#         else:
-#             st.error("Please choose at least one layer above.")
-#     except URLError as e:
-#         st.error(
-#             """
-#             **This demo requires internet access.**
-#             Connection error: %s
-#         """
-#             % e.reason
-#         )
 
 
+with tab3: 
+    st.sidebar.write("_:blue[编队跨城市路线模拟]_")
+    st.caption("此地图路线展示了在跨城市路线下,无人机编队的跨城市飞行的停泊、定位、定向与队流情况.您可以通过左侧的地图面板选择查看特定细节")
+    @st.cache_data
+    def from_data_file(filename):
+        url = (
+            "https://raw.githubusercontent.com/streamlit/"
+            "example-data/master/hello/v1/%s" % filename
+        )
+        return pd.read_json(url)
+
+    try:
+        ALL_LAYERS = {
+            "编队停泊点": pdk.Layer(
+                "HexagonLayer",
+                data=from_data_file("bike_rental_stats.json"),
+                get_position=["lon", "lat"],
+                radius=200,
+                elevation_scale=4,
+                elevation_range=[0, 1000],
+                extruded=True,
+            ),
+            "编队定位点": pdk.Layer(
+                "ScatterplotLayer",
+                data=from_data_file("bart_stop_stats.json"),
+                get_position=["lon", "lat"],
+                get_color=[200, 30, 0, 160],
+                get_radius="[exits]",
+                radius_scale=0.05,
+            ),
+            "编队定向点": pdk.Layer(
+                "TextLayer",
+                data=from_data_file("bart_stop_stats.json"),
+                get_position=["lon", "lat"],
+                get_text="name",
+                get_color=[0, 0, 0, 200],
+                get_size=10,
+                get_alignment_baseline="'bottom'",
+            ),
+            "编队飞行队流": pdk.Layer(
+                "ArcLayer",
+                data=from_data_file("bart_path_stats.json"),
+                get_source_position=["lon", "lat"],
+                get_target_position=["lon2", "lat2"],
+                get_source_color=[200, 30, 0, 160],
+                get_target_color=[200, 30, 0, 160],
+                auto_highlight=True,
+                width_scale=0.0001,
+                get_width="outbound",
+                width_min_pixels=3,
+                width_max_pixels=30,
+            ),
+        }
+        st.sidebar.markdown("### 地图面板")
+        selected_layers = [
+            layer
+            for layer_name, layer in ALL_LAYERS.items()
+            if st.sidebar.checkbox(layer_name, True)
+        ]
+        if selected_layers:
+            st.pydeck_chart(
+                pdk.Deck(
+                    map_style=None,
+                    initial_view_state={
+                        "latitude": 37.76,
+                        "longitude": -122.4,
+                        "zoom": 11,
+                        "pitch": 50,
+                    },
+                    layers=selected_layers,
+                )
+            )
+        else:
+            st.error("Please choose at least one layer above.")
+    except URLError as e:
+        st.error(
+            """
+            **This demo requires internet access.**
+            Connection error: %s
+        """
+            % e.reason
+        )
 
 
 
-# with tab4:
-#     st.sidebar.write("_:blue[算法自适应度评分对比]_")
-#     st.caption("Cyberzoo与Scibd共提供全球67个国家的地形模拟数据,您可以通过在选项框中选择至少一个国家进而将其在数据库中的对应用于算法模拟.算法会生成自适应度评分,其值越高,越表明算法在不同地域、环境下的鲁棒性与稳健性越佳.通过不同国家数据的模拟,能对比算法在不同地域条件下的模拟性能")
 
-#     # @st.cache_data
-#     # def get_UN_data():
-#     #     AWS_BUCKET_URL = "https://streamlit-demo-data.s3-us-west-2.amazonaws.com"
-#     #     df = pd.read_csv(AWS_BUCKET_URL + "/agri.csv.gz")
-#     #     return df.set_index("Region")
 
-#     # try:
-#     #     df = get_UN_data()
-#     #     countries = st.multiselect(
-#     #         "选择数据库来源(国家来源)", list(df.index), ["China", "United States of America"]
-#     #     )
-#     #     if not countries:
-#     #         st.error("请至少选择一个国家.")
-#     #     else:
-#     #         data = df.loc[countries]
-#     #         data /= 1000000.0
-#     #         st.write("### 自适应度评分", data.sort_index())
+with tab4:
+    st.sidebar.write("_:blue[算法自适应度评分对比]_")
+    st.caption("Cyberzoo与Scibd共提供全球67个国家的地形模拟数据,您可以通过在选项框中选择至少一个国家进而将其在数据库中的对应用于算法模拟.算法会生成自适应度评分,其值越高,越表明算法在不同地域、环境下的鲁棒性与稳健性越佳.通过不同国家数据的模拟,能对比算法在不同地域条件下的模拟性能")
 
-#     #         data = data.T.reset_index()
-#     #         data = pd.melt(data, id_vars=["index"]).rename(
-#     #             columns={"index": "year", "value": "Gross Agricultural Product ($B)"}
-#     #         )
-#     #         chart = (
-#     #             alt.Chart(data)
-#     #             .mark_area(opacity=0.3)
-#     #             .encode(
-#     #                 # x="迭代次数:T",
-#     #                 # y=alt.Y("自适应度评分:Q", stack=None),
-#     #                 # color="地区:N",
-#     #                 x="year:T",
-#     #                 y=alt.Y("Gross Agricultural Product ($B):Q", stack=None),
-#     #                 color="Region:N",
-#     #             )
-#     #         )
-#     #         st.altair_chart(chart, use_container_width=True)
-#     # except URLError as e:
-#     #     st.error(
-#     #         """
-#     #         **This demo requires internet access.**
-#     #         Connection error: %s
-#     #     """
-#     #         % e.reason
-#     #     )
+    # @st.cache_data
+    # def get_UN_data():
+    #     AWS_BUCKET_URL = "https://streamlit-demo-data.s3-us-west-2.amazonaws.com"
+    #     df = pd.read_csv(AWS_BUCKET_URL + "/agri.csv.gz")
+    #     return df.set_index("Region")
 
-#     # 获取数据并缓存
-#     @st.cache_data
-#     def get_UN_data():
-#         AWS_BUCKET_URL = "https://streamlit-demo-data.s3-us-west-2.amazonaws.com"
-#         df = pd.read_csv(AWS_BUCKET_URL + "/agri.csv.gz")
-#         return df.set_index("Region")
+    # try:
+    #     df = get_UN_data()
+    #     countries = st.multiselect(
+    #         "选择数据库来源(国家来源)", list(df.index), ["China", "United States of America"]
+    #     )
+    #     if not countries:
+    #         st.error("请至少选择一个国家.")
+    #     else:
+    #         data = df.loc[countries]
+    #         data /= 1000000.0
+    #         st.write("### 自适应度评分", data.sort_index())
 
-#     # 处理数据并绘制图表
-#     try:
-#         # 获取数据
-#         df = get_UN_data()
+    #         data = data.T.reset_index()
+    #         data = pd.melt(data, id_vars=["index"]).rename(
+    #             columns={"index": "year", "value": "Gross Agricultural Product ($B)"}
+    #         )
+    #         chart = (
+    #             alt.Chart(data)
+    #             .mark_area(opacity=0.3)
+    #             .encode(
+    #                 # x="迭代次数:T",
+    #                 # y=alt.Y("自适应度评分:Q", stack=None),
+    #                 # color="地区:N",
+    #                 x="year:T",
+    #                 y=alt.Y("Gross Agricultural Product ($B):Q", stack=None),
+    #                 color="Region:N",
+    #             )
+    #         )
+    #         st.altair_chart(chart, use_container_width=True)
+    # except URLError as e:
+    #     st.error(
+    #         """
+    #         **This demo requires internet access.**
+    #         Connection error: %s
+    #     """
+    #         % e.reason
+    #     )
 
-#         # 选择国家
-#         countries = st.multiselect(
-#             "选择数据库来源(国家来源)", list(df.index), ["China", "United States of America"]
-#         )
+    # 获取数据并缓存
+    @st.cache_data
+    def get_UN_data():
+        AWS_BUCKET_URL = "https://streamlit-demo-data.s3-us-west-2.amazonaws.com"
+        df = pd.read_csv(AWS_BUCKET_URL + "/agri.csv.gz")
+        return df.set_index("Region")
 
-#         if not countries:
-#             st.error("请至少选择一个国家.")
-#         else:
-#             # 选择的国家数据
-#             data = df.loc[countries]
+    # 处理数据并绘制图表
+    try:
+        # 获取数据
+        df = get_UN_data()
+
+        # 选择国家
+        countries = st.multiselect(
+            "选择数据库来源(国家来源)", list(df.index), ["China", "United States of America"]
+        )
+
+        if not countries:
+            st.error("请至少选择一个国家.")
+        else:
+            # 选择的国家数据
+            data = df.loc[countries]
             
-#             # 修改年份数据
-#             data.columns = data.columns.astype(int)  # 确保列名为整数
-#             data.columns = (data.columns - 1960) * 100  # 年份 - 1960 后乘以 100
+            # 修改年份数据
+            data.columns = data.columns.astype(int)  # 确保列名为整数
+            data.columns = (data.columns - 1960) * 100  # 年份 - 1960 后乘以 100
 
-#             data /= 1000000.0  # 自适应度评分除以1000000
-#             # 展示表格
-#             st.write("### 自适应度评分", data.sort_index())
+            data /= 1000000.0  # 自适应度评分除以1000000
+            # 展示表格
+            st.write("### 自适应度评分", data.sort_index())
 
-#             # 转置数据并调整格式
-#             data = data.T.reset_index()
-#             data = pd.melt(data, id_vars=["index"]).rename(
-#                 columns={"index": "迭代次数", "value": "自适应度评分"}
-#             )
+            # 转置数据并调整格式
+            data = data.T.reset_index()
+            data = pd.melt(data, id_vars=["index"]).rename(
+                columns={"index": "迭代次数", "value": "自适应度评分"}
+            )
 
-#             # 绘制折线图
-#             chart = (
-#                 alt.Chart(data)
-#                 .mark_area(opacity=0.3)
-#                 .encode(
-#                     x="迭代次数:T",  # x轴为迭代次数
-#                     y=alt.Y("自适应度评分:Q", stack=None),  # y轴为自适应度评分
-#                     color="Region:N",  # 图例中显示“国家”
-#                 )
-#             )
+            # 绘制折线图
+            chart = (
+                alt.Chart(data)
+                .mark_area(opacity=0.3)
+                .encode(
+                    x="迭代次数:T",  # x轴为迭代次数
+                    y=alt.Y("自适应度评分:Q", stack=None),  # y轴为自适应度评分
+                    color="Region:N",  # 图例中显示“国家”
+                )
+            )
             
-#             # 显示图表
-#             st.altair_chart(chart, use_container_width=True)
+            # 显示图表
+            st.altair_chart(chart, use_container_width=True)
 
-#     except URLError as e:
-#         st.error(
-#             f"""
-#             **This demo requires internet access.**
-#             Connection error: {e.reason}
-#             """
-#         )
-
-
-
-# # # 绘图的类型放在session中
-# # if "graph" not in st.session_state:
-# #     st.session_state.graph = ""
-# st.divider()  
-# st.header("算法对比") 
-# # # 第一列
-# # def column_1():
-# #     st.header("1. 选择数据")
-# #     st.selectbox(
-# #         "选择数据集?",
-# #         (
-# #             "手写数字数据",
-# #             "房屋成交数据",
-# #             "股市交易数据",
-# #         ),
-# #     )
-# #     # 随机模拟的数据
-# #     data = pd.DataFrame(np.random.randn(5, 3), columns=["A", "B", "C"])
-# #     st.table(data)
- 
- 
-# # def column_2():
-# #     st.header("2. 配置数据")
-# #     graph = st.radio(
-# #         "图形类型: ",
-# #         ("折线图", "柱状图", "散点图"),
-# #     )
- 
-# #     st.session_state.graph = graph
- 
- 
-# # def column_3():
-# #     st.header("3. 绘制图形")
- 
-# #     chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["A", "B", "C"])
-# #     if st.session_state.graph == "散点图":
-# #         st.scatter_chart(chart_data)
- 
-# #     if st.session_state.graph == "折线图":
-# #         st.line_chart(chart_data)
- 
-# #     if st.session_state.graph == "柱状图":
-# #         st.bar_chart(chart_data)
- 
- 
-# # col1, col2, col3 = st.columns(3)
- 
-# # with col1:
-# #     column_1()
- 
-# # with col2:
-# #     column_2()
- 
-# # with col3:
-# #     column_3()
+    except URLError as e:
+        st.error(
+            f"""
+            **This demo requires internet access.**
+            Connection error: {e.reason}
+            """
+        )
 
 
-# source = vega_datasets.data.cars()
-# source.rename(columns={'Miles_per_Gallon': '平均均方误差'}, inplace=True)
-# source.rename(columns={'Horsepower': '迭代次数'}, inplace=True)
-# source.rename(columns={'Origin': '算法类型'}, inplace=True)
 
-# # 2. 将特定列中值为'A'的项替换为'B'
-# source['算法类型'] = source['算法类型'].replace('USA', '无源定位算法')
-# source['算法类型'] = source['算法类型'].replace('Japan', '传统球形定位算法')
-# source['算法类型'] = source['算法类型'].replace('Europe', '传统拟合定位算法')
-# chart = {
-#     "mark": "point",
-#     "encoding": {
-#         "x": {
-#             "field": "迭代次数",
-#             "type": "quantitative",
-#         },
-#         "y": {
-#             "field": "平均均方误差",
-#             "type": "quantitative",
-#         },
-#         "color": {"field": "算法类型", "type": "nominal"},
-#         "shape": {"field": "算法类型", "type": "nominal"},
-#     },
-# }
-
-# tab1, tab2 = st.tabs(["Streamlit 主题（默认）", "Vega-Lite 原生主题"])
-
-# with tab1:
-#     # 使用 Streamlit 主题，这是默认主题，您也可以省略 theme 参数
-#     st.vega_lite_chart(
-#         source, chart, theme="streamlit", use_container_width=True
+# # 绘图的类型放在session中
+# if "graph" not in st.session_state:
+#     st.session_state.graph = ""
+st.divider()  
+st.header("算法对比") 
+# # 第一列
+# def column_1():
+#     st.header("1. 选择数据")
+#     st.selectbox(
+#         "选择数据集?",
+#         (
+#             "手写数字数据",
+#             "房屋成交数据",
+#             "股市交易数据",
+#         ),
 #     )
-
-# with tab2:
-#     st.vega_lite_chart(
-#         source, chart, theme=None, use_container_width=True
+#     # 随机模拟的数据
+#     data = pd.DataFrame(np.random.randn(5, 3), columns=["A", "B", "C"])
+#     st.table(data)
+ 
+ 
+# def column_2():
+#     st.header("2. 配置数据")
+#     graph = st.radio(
+#         "图形类型: ",
+#         ("折线图", "柱状图", "散点图"),
 #     )
+ 
+#     st.session_state.graph = graph
+ 
+ 
+# def column_3():
+#     st.header("3. 绘制图形")
+ 
+#     chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["A", "B", "C"])
+#     if st.session_state.graph == "散点图":
+#         st.scatter_chart(chart_data)
+ 
+#     if st.session_state.graph == "折线图":
+#         st.line_chart(chart_data)
+ 
+#     if st.session_state.graph == "柱状图":
+#         st.bar_chart(chart_data)
+ 
+ 
+# col1, col2, col3 = st.columns(3)
+ 
+# with col1:
+#     column_1()
+ 
+# with col2:
+#     column_2()
+ 
+# with col3:
+#     column_3()
+
+
+source = vega_datasets.data.cars()
+source.rename(columns={'Miles_per_Gallon': '平均均方误差'}, inplace=True)
+source.rename(columns={'Horsepower': '迭代次数'}, inplace=True)
+source.rename(columns={'Origin': '算法类型'}, inplace=True)
+
+# 2. 将特定列中值为'A'的项替换为'B'
+source['算法类型'] = source['算法类型'].replace('USA', '无源定位算法')
+source['算法类型'] = source['算法类型'].replace('Japan', '传统球形定位算法')
+source['算法类型'] = source['算法类型'].replace('Europe', '传统拟合定位算法')
+chart = {
+    "mark": "point",
+    "encoding": {
+        "x": {
+            "field": "迭代次数",
+            "type": "quantitative",
+        },
+        "y": {
+            "field": "平均均方误差",
+            "type": "quantitative",
+        },
+        "color": {"field": "算法类型", "type": "nominal"},
+        "shape": {"field": "算法类型", "type": "nominal"},
+    },
+}
+
+tab1, tab2 = st.tabs(["Streamlit 主题（默认）", "Vega-Lite 原生主题"])
+
+with tab1:
+    # 使用 Streamlit 主题，这是默认主题，您也可以省略 theme 参数
+    st.vega_lite_chart(
+        source, chart, theme="streamlit", use_container_width=True
+    )
+
+with tab2:
+    st.vega_lite_chart(
+        source, chart, theme=None, use_container_width=True
+    )
 
 
 
 
 
-# st.markdown('_响应时间分布 :分布越靠左,说明算法响应时间越及时,运算性能更佳_')
-# # 添加直方图数据
-# x1 = np.random.randn(200) - 2
-# x2 = np.random.randn(200)
-# x3 = np.random.randn(200) + 2
+st.markdown('_响应时间分布 :分布越靠左,说明算法响应时间越及时,运算性能更佳_')
+# 添加直方图数据
+x1 = np.random.randn(200) - 2
+x2 = np.random.randn(200)
+x3 = np.random.randn(200) + 2
 
-# # 将数据分组在一起
-# hist_data = [x1, x2, x3]
-# group_labels = ['无源定位算法', '传统球形算法', '传统拟合算法']
+# 将数据分组在一起
+hist_data = [x1, x2, x3]
+group_labels = ['无源定位算法', '传统球形算法', '传统拟合算法']
 
-# # 使用自定义 bin_size 创建 distplot
-# fig = ff.create_distplot(hist_data, group_labels, bin_size=[.1, .25, .5])
+# 使用自定义 bin_size 创建 distplot
+fig = ff.create_distplot(hist_data, group_labels, bin_size=[.1, .25, .5])
 
-# # 绘制图表
-# st.plotly_chart(fig, use_container_width=True)
-
-
+# 绘制图表
+st.plotly_chart(fig, use_container_width=True)
 
 
 
 
 
-# df = px.data.gapminder()
 
-# df.rename(columns={'lifeExp': '稳健性'}, inplace=True)
-# df.rename(columns={'gdpPercap': '迭代次数'}, inplace=True)
-# df.rename(columns={'continent': '算法类型'}, inplace=True)
 
-# df['算法类型'] = df['算法类型'].replace('Asia', '无源定位算法')
-# df['算法类型'] = df['算法类型'].replace('Americas', '传统球形算法')
-# df['算法类型'] = df['算法类型'].replace('Europe', '传统边界算法')
-# df['算法类型'] = df['算法类型'].replace('Africa', '传统拟合算法')
-# df['算法类型'] = df['算法类型'].replace('Oceania', '传统神经网络算法')
-# fig = px.scatter(
-#     df.query("year==2007"),
-#     x="迭代次数",
-#     y="稳健性",
-#     size="pop",
-#     color="算法类型",
-#     hover_name="country",
-#     log_x=True,
-#     size_max=60,
-# )
+df = px.data.gapminder()
 
-# tab1, tab2 = st.tabs(["Streamlit 主题（默认）", "Plotly 原生主题"])
-# with tab1:
-#     # 使用 Streamlit 主题，这是默认的方式，也可以省略 theme 参数
-#     st.plotly_chart(fig, theme="streamlit", use_container_width=True)
-# with tab2:
-#     # 使用 Plotly 的原生主题
-#     st.plotly_chart(fig, theme=None, use_container_width=True)
+df.rename(columns={'lifeExp': '稳健性'}, inplace=True)
+df.rename(columns={'gdpPercap': '迭代次数'}, inplace=True)
+df.rename(columns={'continent': '算法类型'}, inplace=True)
+
+df['算法类型'] = df['算法类型'].replace('Asia', '无源定位算法')
+df['算法类型'] = df['算法类型'].replace('Americas', '传统球形算法')
+df['算法类型'] = df['算法类型'].replace('Europe', '传统边界算法')
+df['算法类型'] = df['算法类型'].replace('Africa', '传统拟合算法')
+df['算法类型'] = df['算法类型'].replace('Oceania', '传统神经网络算法')
+fig = px.scatter(
+    df.query("year==2007"),
+    x="迭代次数",
+    y="稳健性",
+    size="pop",
+    color="算法类型",
+    hover_name="country",
+    log_x=True,
+    size_max=60,
+)
+
+tab1, tab2 = st.tabs(["Streamlit 主题（默认）", "Plotly 原生主题"])
+with tab1:
+    # 使用 Streamlit 主题，这是默认的方式，也可以省略 theme 参数
+    st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+with tab2:
+    # 使用 Plotly 的原生主题
+    st.plotly_chart(fig, theme=None, use_container_width=True)

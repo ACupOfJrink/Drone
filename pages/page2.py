@@ -17,7 +17,7 @@ import plotly.figure_factory as ff
 #     st.switch_page("pages/page1.py")
 #st.set_page_config(page_title='算法对比与数据验证', layout="wide")
 
-st.title('算法对比与数据验证')
+st.title('云端运行与数据验证')
 
 #use markdown 创建链接
 st.markdown ('''_模拟仿真数据来源:_ [访问](https://www.scidb.cn/en/detail?dataSetId=720626420933459968&version=V1&dataSetType=journal&tag=2&language=zh_CN)''')

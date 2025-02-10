@@ -159,7 +159,7 @@ if LocPri == "STEP1——二维无源定位":
     with case4:
         Case4Col1,Case4col2 = st.columns([0.25,0.75])
         with Case4Col1:        
-            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\PositionCase4.png")) + '" width="300"></div>', unsafe_allow_html=True)
+            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/PositionCase4.png")) + '" width="300"></div>', unsafe_allow_html=True)
         with Case4col2:
             st.markdown("对应方程组")
             st.latex(r'\left.\left\{\begin{array}{c}\angle nov=\pi-\angle mov\\\angle ovn=\pi-\angle onv-\angle nov\\\frac{r}{\angle onv}=\frac{d}{\angle ovn}\\\theta_4=(v-0)*40°+\angle nov\end{array}\right.\right.')
@@ -188,7 +188,7 @@ if LocPri == "STEP1——二维无源定位":
                 ''')
     with st.expander('STEP1'):#定理2中展示的俩张图片Fir
         st.caption('规定正方向。规定逆时针方向为长度单位和角度的正方向，如图红箭头所示。')
-        st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\Principle2Step1.png")) + '" width="800"></div>', unsafe_allow_html=True)
+        st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/Principle2Step1.png")) + '" width="800"></div>', unsafe_allow_html=True)
     with st.expander('STEP2'):#定理2中展示的俩张图片Sec
         st.caption('Step2:遍历搜寻所有无人机理想点位，可求得极角θ与(2π一θ)角构成的与发射信号无人机一一对应的的唯一组合，最后得到无人机的编号，如下公式所示。')
         st.latex(r'\begin{cases}FY01:\:0^{\circ}and\;360^{\circ}\\FY01:\:40^{\circ}and\;280^{\circ}\\\;\;\;\;\;\;\;\;\;\;\;\;\;\;\vdots\\FY09:\:280^{\circ}and\;40^{\circ}\end{cases}')                
@@ -218,7 +218,7 @@ if LocPri == "STEP1——二维无源定位":
     with Principle3Case1:
         Prin3Case1Col1,Prin3Case1col2 = st.columns([0.25,0.75])
         with Prin3Case1Col1:        
-            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\Principle3Case1.png")) + '" width="300"></div>', unsafe_allow_html=True)
+            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/Principle3Case1.png")) + '" width="300"></div>', unsafe_allow_html=True)
         with Prin3Case1col2:
             st.markdown("对应方程组")
             st.latex(r'\begin{cases}\begin{aligned}&\cos\angle mno=\frac{d_{mn}{}^2+d_{mo}{}^2-r^2}{2d_{mn}d_{no}}\\&\cos\angle sno=\frac{d_{sn}{}^2+d_{no}{}^2-d_{so}{}^2}{2d_{sn}d_{no}}\\&\left(\frac{d_{no}{}^2+d_{so}{}^2-d_{nv}{}^2}{2d_{no}d_{so}}\right)^2+\left(\frac{d_{ns}{}^2*\sin\angle sno}{d_{so}}\right)=1\\&\frac{r}{\sin\angle mno}=\frac{d_{mn}}{\sin\angle mos*\left(\frac{d_{mn}{}^2+d_{so}{}^2-d_{ns}{}^2}{2d_{mo}d_{so}}\right)-\cos\angle mos*\left(\frac{d_{ns}*\sin\angle sno}{d_{so}}\right)}\end{aligned}\end{cases}')
@@ -227,7 +227,7 @@ if LocPri == "STEP1——二维无源定位":
     with Principle3Case2:
         Prin3Case2Col1,Prin3Case2col2 = st.columns([0.25,0.75])
         with Prin3Case2Col1:        
-            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\Principle3Case2.png")) + '" width="300"></div>', unsafe_allow_html=True)
+            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/Principle3Case2.png")) + '" width="300"></div>', unsafe_allow_html=True)
         with Prin3Case2col2:
             st.markdown("对应方程组")
             st.latex(r'\begin{cases}\begin{aligned}&\cos\angle mno=\frac{d_{mn}{}^2+d_{mo}{}^2-r^2}{2d_{mn}d_{no}}\\&\cos\angle sno=\frac{d_{sn}{}^2+d_{no}{}^2-d_{so}{}^2}{2d_{sn}d_{no}}\\&\left(\frac{d_{no}{}^2+d_{so}{}^2-d_{nv}{}^2}{2d_{no}d_{so}}\right)^2+\left(\frac{d_{ns}{}^2*\sin\angle sno}{d_{so}}\right)=1\\&\frac{r}{\sin\angle mno}=\frac{d_{mn}}{\sin\angle mos*\left(\frac{d_{mn}{}^2+d_{so}{}^2-d_{ns}{}^2}{2d_{mo}d_{so}}\right)-\cos\angle mos*\left(\frac{d_{ns}*\sin\angle sno}{d_{so}}\right)}\end{aligned}\end{cases}')
@@ -241,7 +241,7 @@ if LocPri == "STEP2——三维无源定位":
 
     st.write('$$其中，x_{n}，y_{n}，z_{n}表示第n个无人机的欧式空间x，y，z轴坐标，Φ是黄金分割比,约为0.618，N是排成球面所需要的总的粒子数,本章中的球形编队球面由N=999架直径可近似等于ε（无限小）的无人机组成。如图 27为球面分布999个点的效果，其任意两个节点到球心连线所形成的夹角相等，可看成三维球形无人机初始状态编队$$')
 
-    st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\Demention3.png")) + '" width="800"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/Demention3.png")) + '" width="800"></div>', unsafe_allow_html=True)
 
     st.markdown('''<p class = 'kai-font_center'>n球面上分布1000个点的效果图</p>''', unsafe_allow_html = True )
 
@@ -249,19 +249,19 @@ if LocPri == "STEP2——三维无源定位":
 
     Demention3Col1,Demention3Col2,Demention3Col3,Demention3Col4 = st.tabs(['情形一','情形二','情形三','情形四'])
     with Demention3Col1 :
-        st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\Demention3Case1.png")) + '" width="400"></div>', unsafe_allow_html=True)
+        st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/Demention3Case1.png")) + '" width="400"></div>', unsafe_allow_html=True)
         st.caption('可归结为如下的方程')
         st.latex(r'\left.\left\{\begin{array}{l}d_{nv}{}^2-2rd_{nv}\cos\left(\pi-\beta_2-\beta_4+\angle mon\right)\\=d_{nm}{}^2-2rd_{nm}\cos\left(\pi-\beta_1-\angle mon\right)\\\frac{d_{nv}}{\sin\angle nov}=\frac{r}{\sin\beta_2}(\angle nov=\beta_4-\angle mon)\\\frac{d_{nm}}{\sin\angle mon}=\frac{r}{\sin\beta_1}\end{array}\right.\right.')        
     with Demention3Col2 :
-        st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\Demention3Case2.png")) + '" width="400"></div>', unsafe_allow_html=True)
+        st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/Demention3Case2.png")) + '" width="400"></div>', unsafe_allow_html=True)
         st.caption('可归结为如下的方程')
         st.latex(r'\left.\left\{\begin{array}{l}d_{nv}{}^2-2rd_{nv}\cos\left(\beta_4+\angle mon-\pi-\beta_2\right)\\=d_{nm}{}^2-2rd_{nm}\cos\left(\pi-\beta_1-\angle mon\right)\\\frac{d_{nv}}{\sin\angle nov}=\frac{r}{\sin\beta_2}\left(\angle nov=2\pi-\beta_4-\angle mon\right)\\\frac{d_{nm}}{\sin\angle mon}=\frac{r}{\sin\beta_1}\end{array}\right.\right.')
     with Demention3Col3 :
-        st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\Demention3Case3.png")) + '" width="400"></div>', unsafe_allow_html=True)
+        st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/Demention3Case3.png")) + '" width="400"></div>', unsafe_allow_html=True)
         st.caption('可归结为如下的方程')
         st.latex(r'\Large\frac{r}{\sin\angle mno}=\frac{d_{on}}{\sin\angle omn}')
     with Demention3Col4 :
-        st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\Demention3Case4.png")) + '" width="400"></div>', unsafe_allow_html=True)
+        st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/Demention3Case4.png")) + '" width="400"></div>', unsafe_allow_html=True)
         st.caption('可归结为如下的方程')
         st.latex(r'\Large\frac{r}{\sin\angle onv}=\frac{d_{on}}{\sin\angle ovn}')        
     st.divider()
@@ -279,7 +279,7 @@ if LocPri == "STEP3——求解准确位置":
     st.markdown('刚体是指任意两点间的距离不因力的作用而发生变化的质点组。而自由度是指确定一个系统运动状态所必须的，能够独立变化的物理量个数。对于三维空间中的球体，尤其是研究三维空间中的无人机相对定位问题时，可以把已复位的无人机形成的坐标框架视为刚体。在错位的无人机复位时，位置正确的无人机之间的相对距离不发生改变。它们间的整体运行可以视为刚体运动。\n\n任取刚体上三个不共线的点，便可以确定刚体运动的自由度。对于三个自由的质点应该存在 9 个自由度，如果用直角坐标系这九个自由度分别为$$x_1,y_1,z_1,x_2,y_2,z_2,x_3,y_3,z_3$$对于刚体来说，这三个质点两两之间的距离保持不变，故有三个约束方程')
     st.latex(r'(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2=r_{12}^2\\(x_2-x_3)^2+(y_2-y_3)^2+(z_2-z_3)^2=r_{23}^2\\(x_1-x_3)^2+(y_1-y_3)^2+(z_1-z_3)^2=r_{13}^2')
     st.markdown(':blue[定理二：]三维空间中无人机定位可视为刚体的定点转动，其一定可以分解为三种独立的运动，分别为 自转(图 a)、进动(图 b)、章动(图 c)')
-    st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\RigidMotionClassification.png")) + '" width="1000"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/RigidMotionClassification.png")) + '" width="1000"></div>', unsafe_allow_html=True)
 
     RigidMotionTranslation = st.expander(label=r'$$\begin{aligned}&\text{对于图(a)：首先将坐标轴绕着 z 方向旋转一个角度 }\phi(0\thicksim 2\pi)\text{,这称之为进动,}  \phi\text{ 叫做进动角.}\text{此时的刚体坐标系为 }O\xi\eta\zeta.\text{三个方}\\&\text{向上的单位矢量为 }\vec{e}_{1}^{\prime},\vec{e}_{2}^{\prime},\vec{e}_{3}^{\prime}\text{.进动对应的矩阵形式如下:}\end{aligned}$$',expanded = True)
     RigidMotionPrecession = st.expander(label=r'$$\begin{aligned}&\text{对于图(b)：将坐标系 }O\xi\eta\zeta\text{绕着}\xi\text{轴旋转一个角度 }\theta(0\thicksim\pi)\text{,称为章动,}\theta\text{为章动角}_{.}\text{转动之后的刚体坐标系为}O\xi^{\prime}\eta^{\prime}\zeta^{\prime}.\text{三个方向上的}\\&\text{单位矢量为}\vec{e}_{1}^{\prime\prime},\vec{e}_{2}^{\prime\prime},\vec{e}_{3}^{\prime\prime}.\text{图中的 ON 称为节线,为章动时的转轴.章动对应的矩阵形式如下:}\end{aligned}$$',expanded = True)

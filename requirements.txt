@@ -8,5 +8,5 @@ plotly==5.24.1
 scipy==1.12.0
 typing
 Image==10.2.0
-base64
-BytesIO
+base64==3.11.9
+io==3.11.9

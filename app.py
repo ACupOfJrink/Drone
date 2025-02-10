@@ -8,6 +8,6 @@ page2 = st.Page("pages/page2.py", title="算法对比")
 
 page3 = st.Page("pages/page3.py", title="避障算法")
 
-pg = st.navigation([page0, page1, page2, page3])
+pg = st.navigation([page0, page1, page3, page2])
 
 pg.run()

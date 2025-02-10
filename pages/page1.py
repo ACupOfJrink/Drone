@@ -79,7 +79,7 @@ with st.sidebar:
 # 定位维度
 if LocPri == "主页":
     st.title('_:blue[空中使者]_——基于优化理论的无人机无源定位方法')
-    st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\PositionSummary.png")) + '" width="1200"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/PositionSummary.png")) + '" width="1200"></div>', unsafe_allow_html=True)
     st.header('简介:')
     st.markdown('''
                 :blue[对于二维无源定位：]此情形下，本文基于分布式控制策略，通过建立被动接收信号无人机的定位模型，从而进行自适应调节无人机位置。
@@ -132,7 +132,7 @@ if LocPri == "STEP1——二维无源定位":
     with case1:
         Case1Col1,Case1col2 = st.columns([0.25,0.75])
         with Case1Col1:
-            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\PositionCase1.png")) + '" width="300"></div>', unsafe_allow_html=True)
+            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/PositionCase1.png")) + '" width="300"></div>', unsafe_allow_html=True)
         with Case1col2:
             st.markdown("对应方程组")
             st.latex(r'\begin{cases}\begin{aligned}&d_{on}^2=d_{nv}^2+r^2-2rd_{nv}*\cos\angle nvo\left(\angle nvo=\pi-\angle vno-\angle nov\right)\\&d_{on}^2=d_{mn}^2+r^2-2rd_{mn}*\cos\angle mno\\&\left\{\angle mno=[\pi-\angle mno-(v-m)*40°-\angle nov]\right\}\end{aligned}\end{cases}')
@@ -141,7 +141,7 @@ if LocPri == "STEP1——二维无源定位":
     with case2:
         Case2Col1,Case2col2 = st.columns([0.25,0.75])
         with Case2Col1:
-            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\PositionCase2.png")) + '" width="300"></div>', unsafe_allow_html=True)
+            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/PositionCase2.png")) + '" width="300"></div>', unsafe_allow_html=True)
         with Case2col2:
             st.markdown("对应方程组")
             st.latex(r'\begin{cases}\left.\begin{aligned}&d_{nv}{}^2-2rd_{nv}*\cos(\pi-\angle vno-\angle nov)=\\&d_{mn}{}^2-2rd_{mn}*\cos[\pi-\angle mno-(v-m)*40°-\angle nov]\\&\frac{d_{nv}}{\sin\left(\angle nov\right)}=\frac{r}{\sin\left(\angle vno\right)}\\&d_{mv}{}^2=d_{nv}{}^2+d_{mn}{}^2-2d_{nv}d_{mn}*\cos\left(\angle vnm\right)\\&\theta_1=(v-m)*40°-\angle nov\end{aligned}\right.\end{cases}')
@@ -150,7 +150,7 @@ if LocPri == "STEP1——二维无源定位":
     with case3:
         Case3Col1,Case3col2 = st.columns([0.25,0.75])
         with Case3Col1:
-            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open(r".\images\PositionCase3.png")) + '" width="300"></div>', unsafe_allow_html=True)
+            st.markdown('<div class="center"><img src="data:image/png;base64,' + image_to_base64(Image.open("./images/PositionCase3.png")) + '" width="300"></div>', unsafe_allow_html=True)
         with Case3col2:
             st.markdown("对应方程组")
             st.latex(r'\begin{cases}\begin{aligned}&\angle mon=\pi-\angle mno-\angle omn\\&\theta_3=\angle mon+(m-0)*40°\\&\frac{r}{\angle mno}=\frac{d_{on}}{\angle omn}\end{aligned}\end{cases}')
